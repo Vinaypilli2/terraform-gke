@@ -39,10 +39,10 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/sprint-boot-app:v1.${{ github.run_number }} .
-          docker tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/sprint-boot-app:v1.${{ github.run_number }} gcr.io/${{ secrets.GCP_PROJECT_ID }}/sprint-boot-app:latest
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/vinay/sprint-boot-app:v1.${{ github.run_number }} .
+          docker tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/vinay/sprint-boot-app:v1.${{ github.run_number }} gcr.io/${{ secrets.GCP_PROJECT_ID }}/vinay/sprint-boot-app:latest
 
       - name: Push Docker Image to GCR
         run: |
-          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/sprint-boot-app:v1.${{ github.run_number }}
-          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/sprint-boot-app:latest
+          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/vinay/sprint-boot-app:v1.${{ github.run_number }}
+          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/vinay/sprint-boot-app:latest
