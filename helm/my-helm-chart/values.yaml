@@ -1,0 +1,32 @@
+replicaCount: 2
+
+image:
+  repository: my-docker-repo/sample-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  host: example.com
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  cpuUtilization: 75
+
+pdb:
+  enabled: true
+  minAvailable: 1

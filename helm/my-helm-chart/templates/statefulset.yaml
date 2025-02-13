@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sample-db
+  namespace: my-app-namespace
+spec:
+  serviceName: "sample-db"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-db
+  template:
+    metadata:
+      labels:
+        app: sample-db
+    spec:
+      containers:
+        - name: sample-db
+          image: postgres:latest
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: DATABASE_PASSWORD
