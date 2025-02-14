@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Local .terraform directories
 **/.terraform/*
 
@@ -17,7 +16,6 @@ crash.*.log
 *.tfvars
 *.tfvars.json
 
-# Ignore override files as=======
+# Ignore override files as well
 target/classes/com/example/demo/DemoApplication.class
 target/classes/application.properties
->>>>>>> devsecops/main
