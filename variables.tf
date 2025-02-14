@@ -1,15 +1,10 @@
 variable "project_id" {
-  description = "GCP Project ID"
+  description = "The project ID for the Google Cloud project"
   type        = string
 }
 
 variable "region" {
-  description = "GCP Region"
+  description = "The region for the Google Cloud resources"
   type        = string
-}
-
-variable "gcp_credentials" {
-  description = "GCP Service Account JSON key"
-  type        = string
-  sensitive   = true
+  default     = "us-west1"
 }

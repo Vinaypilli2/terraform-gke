@@ -1,6 +1,7 @@
 terraform {
   backend "gcs" {
-    bucket  = "${var.project_id}-terraform-state"
-    prefix  = "terraform/state"
+    bucket = "molten-smithy-449113-t6-terraform-state"
+    prefix = "terraform/state"
+    region = "us-west1"
   }
 }
