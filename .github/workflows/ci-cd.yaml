@@ -3,15 +3,15 @@ name: Build & Test Maven Project
 on:
   push:
     branches:
-      - main
+      - feature/create-bucket    # Trigger on your feature/create-bucket branch
   pull_request:
     branches:
-      - main
+      - feature/create-bucket    # Trigger on pull request to your feature/create-bucket branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
-        distribution: 'temurin'  # The AdoptOpenJDK distribution is now called 'temurin'
+        distribution: 'temurin'
 
     - name: Install dependencies and run tests
       run: mvn install
@@ -31,3 +31,4 @@ jobs:
       with:
         name: junit-reports
         path: target/surefire-reports/**/*.xml
+
