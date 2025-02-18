@@ -1,0 +1,7 @@
+image:
+  repository: us-central1-docker.pkg.dev/molten-smithy-449113-t6/gke-demo  # Your GCR repository URL
+  tag: latest                              # Image tag, you can change it if needed
+  pullPolicy: Always                       # Image pull policy (Always, IfNotPresent, Never)
+
+replicaCount: 1                            # Number of replicas for the deployment
+containerPort: 8080                        # Port for the container

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tf
+  labels:
+    app: tf
+spec:
+  replicas: {{ .Values.replicaCount }}      # Use the replicaCount variable from values.yaml
+  selector:
+    matchLabels:
+      app: tf
+  template:
+    metadata:
+      labels:
+        app: tf
+    spec:
+      containers:
+      - name: tf
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"  # Reference the image repository and tag from values.yaml
+        imagePullPolicy: {{ .Values.image.pullPolicy }}                   # Use image pull policy from values.yaml
+        ports:
+        - containerPort: {{ .Values.containerPort }}                      # Use container port from values.yaml

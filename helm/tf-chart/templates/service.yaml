@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tf
+  labels:
+    app: tf
+spec:
+  type: {{ .Values.service.type }}               # Service type (ClusterIP, LoadBalancer, etc.)
+  ports:
+    - port: {{ .Values.service.port }}           # Port to expose
+      targetPort: 8080
+  selector:
+    app: tf
