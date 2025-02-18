@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - feature/create-bucket    # Trigger on your feature/create-bucket branch
+    paths-ignore:
+      - 'helm/**'                # Ignore changes in the helm directory
+      - 'k8s/**'                  # Ignore changes in the k8s directory
+      - 'README.md'               # Ignore changes to the README file
   pull_request:
     branches:
       - feature/create-bucket    # Trigger on pull request to your feature/create-bucket branch
@@ -45,12 +49,13 @@ jobs:
         IMAGE_NAME=${{ github.event.repository.name }}  # Use repo name as the image name
         PROJECT_ID=${{ secrets.GCP_PROJECT_ID }}       # From GitHub Secrets
         GCR_REPO=${{ secrets.GCP_GCR_REPO }}           # From GitHub Secrets (GCR repo name)
+        GITHUB_RUN_ID=${{ github.run_id }}             # GitHub run ID for the tag
 
-        # Build the Docker image
+        # Build the Docker image with the GitHub run ID as the tag
         docker build -t gcr.io/${PROJECT_ID}/${GCR_REPO}/${IMAGE_NAME}:${GITHUB_RUN_ID} .
 
-        # Push the Docker image to Google Container Registry
-        docker push gcr.io/${PROJECT_ID}/${GCR_REPO}/${IMAGE_NAME}:${GITHUB_RUN_ID} 
+        # Push the Docker image to Google Container Registry with the GitHub run ID as the tag
+        docker push gcr.io/${PROJECT_ID}/${GCR_REPO}/${IMAGE_NAME}:${GITHUB_RUN_ID}
 
   update-newtag-in-helm-chart:
     runs-on: ubuntu-latest
