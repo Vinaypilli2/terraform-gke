@@ -1,6 +1,6 @@
 image:
   repository: us-central1-docker.pkg.dev/molten-smithy-449113-t6/gke-demo  # Your GCR repository URL
-  tag: "13391861248"
+  tag: "13391884469"
   pullPolicy: Always                       # Image pull policy (Always, IfNotPresent, Never)
 
 replicaCount: 1                            # Number of replicas for the deployment
